@@ -56,12 +56,12 @@ RSpec.describe UsersController, :type => :controller do
                              password_confirmation: 'icu812') }
     it 'renders show' do 
       get :show, id: user.id
-      expect(respone).to render_template(:show)
+      expect(response).to render_template(:show)
     end
 
     it 'assigns the correct user' do
       get :show, id: user.id
-      expect(assigns(:user)).to eq(:user)
+      expect(assigns(:user)).to eq(user)
     end
   end
 
@@ -97,7 +97,7 @@ RSpec.describe UsersController, :type => :controller do
 
     it 'assigns correct user' do 
       get :edit, id: user_to_edit.id
-      expect(assigns(:user)).to eq(:user_to_edit)
+      expect(assigns(:user)).to eq(user_to_edit)
     end
   end
 
@@ -115,7 +115,7 @@ RSpec.describe UsersController, :type => :controller do
 
       it 'redirects to users#show' do 
         patch :update, id: user_to_edit.id, user: { name: 'The One and Only' }
-        expect(response).to render_template(user_path(user_to_edit.id))
+        expect(response).to redirect_to(user_path(user_to_edit.id))
       end
     end
 
@@ -135,22 +135,22 @@ RSpec.describe UsersController, :type => :controller do
 
   describe 'DELETE #destroy' do 
     it 'deletes requested user' do 
-      let(:user_to_remove) { User.create(name: 'Bennett Adams', 
-                                     email: 'bennettadams46@gmail.com', 
-                                     password: 'icu812', 
-                                     password_confirmation: 'icu812') }
+      user_to_remove = User.create(name: 'Bennett Adams', 
+                                   email: 'bennettadams46@gmail.com', 
+                                   password: 'icu812', 
+                                   password_confirmation: 'icu812')
       expect{
         delete :destroy, id: user_to_remove.id
       }.to change(User, :count).by(-1)
     end
 
     it 'redirects to index' do 
-      let(:user_to_remove) { User.create(name: 'Bennett Adams', 
-                                     email: 'bennettadams46@gmail.com', 
-                                     password: 'icu812', 
-                                     password_confirmation: 'icu812') }
+      user_to_remove = User.create(name: 'Bennett Adams', 
+                                   email: 'bennettadams46@gmail.com', 
+                                   password: 'icu812', 
+                                   password_confirmation: 'icu812')
       delete :destroy, id: user_to_remove.id
-      expect(response).to render_template(:index)
+      expect(response).to redirect_to(users_path)
     end
   end
 end
