@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  get 'signup' => 'users#new'
-  post 'users/create' => 'users#create' 
-  get 'users/:id' => 'users#show', :as => :user
-  get 'users/' => 'users#index', :as => :users
-  get 'users/:id/edit' => 'users#edit'
-  patch 'users/:id' => 'users#update'
-  delete 'users/:id' => 'users#destroy'
+
+  root 'static_pages#welcome'
+
+  get '/signup' => 'users#new'
+  get '/signin' => 'sessions#new'
+
+  resources :sessions, only: [:create]
+  resources :users, except: [:new]
+  # post 'users/create' => 'users#create' 
+  # get 'users/:id' => 'users#show', :as => :user
+  # get 'users/' => 'users#index', :as => :users
+  # get 'users/:id/edit' => 'users#edit'
+  # patch 'users/:id' => 'users#update'
+  # delete 'users/:id' => 'users#destroy'
 
 
 
