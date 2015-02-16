@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#welcome'
-
+  root 'static_pages#home'
+  get '/about' => 'static_pages#about'
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
-
+  delete '/signout' => 'sessions#destroy'
   resources :sessions, only: [:create]
   resources :users, except: [:new]
   # post 'users/create' => 'users#create' 
