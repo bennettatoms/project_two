@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt-ruby'
 gem 'rails_12factor', group: :production
 gem 'json'
-
+gem 'foundation-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

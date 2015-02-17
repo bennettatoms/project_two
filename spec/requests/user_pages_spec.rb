@@ -26,13 +26,13 @@ describe 'user pages' do
 
     describe 'delete links' do 
       let!(:user1) { User.create(name: 'Bennett Adams', 
-                                email: 'bennettadams46@gmail.com', 
-                                password: 'icu812', 
-                                password_confirmation: 'icu812') }
+                                 email: 'bennettadams46@gmail.com', 
+                                 password: 'icu812', 
+                                 password_confirmation: 'icu812') }
       let!(:user2) { User.create(name: 'Sam Iam', 
-                                email: 'samiam@gmail.com', 
-                                password: 'foobar', 
-                                password_confirmation: 'foobar') }
+                                 email: 'samiam@gmail.com', 
+                                 password: 'foobar', 
+                                 password_confirmation: 'foobar') }
       before { visit users_path }
       it { should have_link('delete', href: user_path(user.first)) }
 

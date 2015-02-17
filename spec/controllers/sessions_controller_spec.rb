@@ -9,10 +9,10 @@ RSpec.describe SessionsController, :type => :controller do
   end
 
   describe 'POST #create' do 
-    let(:user) { User.create( name: 'Bennett Adams', 
-                              email: 'bennettadams46@gmail.com', 
-                              password: 'icu812', 
-                              password_confirmation: 'icu812') }
+    let(:user) { User.create(name: 'Bennett Adams', 
+                             email: 'bennettadams46@gmail.com', 
+                             password: 'icu812', 
+                             password_confirmation: 'icu812') }
 
     context 'valid information' do 
       it 'signs in user' do 
@@ -39,10 +39,10 @@ RSpec.describe SessionsController, :type => :controller do
   end
 
   describe 'DELETE #destroy' do 
-    let(:user) { User.create( name: 'Bennett Adams', 
-                              email: 'bennettadams46@gmail.com', 
-                              password: 'icu812', 
-                              password_confirmation: 'icu812') }
+    let(:user) { User.create(name: 'Bennett Adams', 
+                             email: 'bennettadams46@gmail.com', 
+                             password: 'icu812', 
+                             password_confirmation: 'icu812') }
     before { sign_in(user, no_capybara: true) }
 
     it 'destroys requested session' do 
