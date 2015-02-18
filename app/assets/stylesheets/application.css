@@ -12,7 +12,25 @@
  *
  *= require_tree .
  *= require_self
- *= require foundation_and_overrides
+
 
  */
-/*= require foundation */
+/*Footer */
+* {
+margin: 0;
+}
+html, body {
+height: 100%;
+}
+
+.footer, .push {
+height: 2em;
+}
+
+.footer {
+  text-align: center;
+  width: 100%;
+  background-color: #3a3f44;
+  opacity: 0.8;
+  color: #C2D1E0;
+}
