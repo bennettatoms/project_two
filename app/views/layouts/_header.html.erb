@@ -1,0 +1,50 @@
+<section class="container">
+
+  <!-- Main component for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h2>Welcome to ProjectTwo: Clever Title Underway</h2>
+  </div>
+   <!-- Static navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><%= link_to "Search Twitter", tweets_path %></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if signed_in? %>
+            <!-- <li><%#= link_to "My Searches", searches_path %></li> -->
+            <li><%= link_to "My Profile", user_path(current_user) %></li>
+            <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "Sign Out", signout_path, method: 'delete' %></li>
+          <% else %>
+            <li><%= link_to "Sign Up", signup_path %></li>
+            <li><%= link_to "Sign In", signin_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>

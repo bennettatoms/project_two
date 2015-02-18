@@ -1,0 +1,18 @@
+<body>
+
+  <h1>Welcome!</h1>
+
+  <%= form_tag('/tweets', method: "get") do %>
+    <%= label_tag(:query, "Search for:") %>
+    <%= text_field_tag(:query, params[:term]) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+
+  <% @tweets.each do |tweet| %>
+    <p><strong><%= tweet[:text] %></strong></p>
+    <p>--<%= tweet[:created_at] %></p>
+  <% end %>
+
+</body>
+
+
