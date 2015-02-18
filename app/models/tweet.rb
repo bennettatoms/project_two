@@ -32,10 +32,11 @@ class Tweet < ActiveRecord::Base
     tweet = nil
     if response.code == '200'
       tweet  = JSON.parse(response.body)
-      
-      display = tweet["statuses"].map do |tweet|
+      display = tweet['statuses'].map do |tweet|
         { text: tweet['text'],
+          user: tweet['user']['screen_name'],
           created_at: DateTime.parse(tweet['created_at']).strftime('%T, %v') }
+
       end
     else
       puts "Could not retrieve tweets! " +
