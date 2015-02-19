@@ -35,12 +35,12 @@ height: 2em;
   color: #C2D1E0;
 }
 
-.welcome-blurb h1 {
+.blurb h4 {
   text-align: center;
   line-height: 1.5;
 }
 
-.about-blurb h1 {
+.blurb h1 {
   text-align: center;
 }
 
