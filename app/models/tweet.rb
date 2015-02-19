@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
-
+  belongs_to :searches
+  
   def self.search_tweets(term)
     address = parse_address(term)
     response = get_response(address)
