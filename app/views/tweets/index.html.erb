@@ -1,13 +1,13 @@
 <body>
-  <div class="row">
+  <div class="row search-analyze">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-2">
         <%= form_tag('/tweets', method: "get") do %>
         <%= label_tag(:query, "Search for:") %>
-        <%= text_field_tag(:query, params[:term]) %>
+        <%= text_field_tag(:query, params[:term], placeholder: "e.g. Sally Jesse Raphael", size:60, autofocus: true) %>
         <%= submit_tag("Search") %>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-lg-4">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-lg-4 analyze">
       <% if signed_in? %>
         <a href="#" class="btn btn-info btn-lg">Save Tweet Analysis</a>   
       <% else %>
@@ -21,12 +21,12 @@
       <table class="table table-bordered sum">
         <% if @total < 0 %>
           <tr class="danger">
-            <td>Sentiment total for <%= @term %></td>
+            <td>Current sentiment total for <%= @term ? "#{@term}:" : "Sally Jesse Raphael:" %></td>
             <td style="color:white"><strong><%= @total.to_s %></strong></td>
           </tr>
         <% else %>  
           <tr class="success">
-            <td>Sentiment total for <%= @term %></td>
+            <td>Sentiment total for <%= @term ? "Your search for #{@term} yielded:" : "Example search: Sally Jesse Raphael" %></td>
             <td style="color:white"><strong><%= @total.to_s %></strong></td>
           </tr>
         <% end %>
@@ -40,7 +40,7 @@
           <table class="table table-bordered">
 
             <p style="color:white"><strong><%= tweet[:text] %></strong></p>
-            <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %>, sentiment score: <strong><%= tweet[:sentiment] ? tweet[:sentiment]["score"] : 'NA' %></strong></p>
+            <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %>, sentiment score: <strong><%= tweet[:sentiment] ? tweet[:sentiment]["score"] : 'not available' %></strong></p>
           </table>
         <% end %>
       </ul>
