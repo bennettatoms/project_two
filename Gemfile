@@ -29,6 +29,7 @@ gem 'bcrypt-ruby'
 gem 'rails_12factor', group: :production
 gem 'json'
 gem 'oauth'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
 
 
 # Use Unicorn as the app server

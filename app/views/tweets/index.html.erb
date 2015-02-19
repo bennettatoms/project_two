@@ -1,18 +1,49 @@
 <body>
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-      <%= form_tag('/tweets', method: "get") do %>
-      <%= label_tag(:query, "Search for:") %>
-      <%= text_field_tag(:query, params[:term]) %>
-      <%= submit_tag("Search") %>
-    <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-2">
+        <%= form_tag('/tweets', method: "get") do %>
+        <%= label_tag(:query, "Search for:") %>
+        <%= text_field_tag(:query, params[:term]) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-lg-4">
+      <% if signed_in? %>
+        <a href="#" class="btn btn-info btn-lg">Save Tweet Analysis</a>   
+      <% else %>
+        <a href="#" class="btn btn-primary disabled">Please Sign In</a>
+      <% end %>
+    </div>
+  </div>
+     <br>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+      <table class="table table-bordered sum">
+        <% if @total < 0 %>
+          <tr class="danger">
+            <td>Sentiment total for <%= @term %></td>
+            <td style="color:white"><strong><%= @total.to_s %></strong></td>
+          </tr>
+        <% else %>  
+          <tr class="success">
+            <td>Sentiment total for <%= @term %></td>
+            <td style="color:white"><strong><%= @total.to_s %></strong></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg 6">Word Cloud</div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-      <% @tweets.each do |tweet| %>
-        <p><strong><%= tweet[:text] %></strong></p>
-        <p>    --<%= tweet[:user] %> at <%= tweet[:created_at] %></p>
-      <% end %>
+    <div class="col-xs-8 col-sm-offset-2 col-sm-8 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+      <h3><%= @term ? "Your search for #{@term} yielded:" : "Example search: Sally Jesse Raphael" %></h3> 
+        <% @tweets.each do |tweet| %>
+          <table class="table table-bordered">
+
+            <p style="color:white"><strong><%= tweet[:text] %></strong></p>
+            <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %>, sentiment score: <strong><%= tweet[:sentiment] ? tweet[:sentiment]["score"] : 'NA' %></strong></p>
+          </table>
+        <% end %>
+      </ul>
     </div>
   </div>
   <div class="row">
