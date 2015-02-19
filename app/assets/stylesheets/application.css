@@ -34,3 +34,24 @@ height: 2em;
   opacity: 0.8;
   color: #C2D1E0;
 }
+
+.welcome-blurb h1 {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.about-blurb h1 {
+  text-align: center;
+}
+
+.analyze{
+  float: right;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+.search-analyze {
+  text-align: center, center;
+  height: 50px;
+  margin-bottom: 30px;
+}

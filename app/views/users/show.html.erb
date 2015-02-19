@@ -1,3 +1,13 @@
 <% provide(:title, @user.name) %>
 
-<h1><% @user.name %></h1>
+<h2><%= @user.name %>'s Searches</h2>
+<ul>
+  <% @user.searches.each do |item| %>
+    <li>
+      <%= link_to search.search_term, search_path(search) %>
+      <% if current_user?(@user) %>
+         | <%= link_to "edit", edit_search_path(search) %>
+      <% end %>
+     </li>
+  <% end %>
+</ul>
