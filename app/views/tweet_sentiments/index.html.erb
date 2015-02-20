@@ -1,0 +1,15 @@
+<% provide(:title, 'Tweet Sentiments') %>
+
+<h1>All Saved Tweet Sentiments</h1>
+
+<ul>
+  <% @sentiments.each do |sentiment| %>
+    <li>
+      <%= link_to sentiment.search_term, tweet_sentiment_path(@sentiment) %>
+      <% if current_user.admin? && !current_user(user) %>
+        | <%= link_to 'delete', sentiment, method: :delete, data: 
+        { confirm: 'Are you sure?' } %>
+        <% end %>
+    </li>
+  <% end %>
+</ul>

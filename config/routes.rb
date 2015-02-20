@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   get '/signup' => 'users#new'
   get '/signin' => 'sessions#new'
+  get '/users/:id/sentiments/:id' => 'tweet_sentiments#show'
+  # get '/search' => 'searches#new'  # search input text field and submit button
+  # get '/search/:term' => 'searches#index', as: :results
   delete '/signout' => 'sessions#destroy'
-  get '/tweets' => 'tweets#index', as: :tweets
+  resources :tweet_sentiments, only: [:index, :delete]
   resources :sessions, only: [:create]
   resources :users, except: [:new]
+  resources :searches, except: [:create]
   # post 'users/create' => 'users#create' 
   # get 'users/:id' => 'users#show', :as => :user
   # get 'users/' => 'users#index', :as => :users

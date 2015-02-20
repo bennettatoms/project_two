@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_save { email.downcase! }
 
-  has_many :searches
+  has_many :tweet_sentiments, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3, maximum: 255 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i

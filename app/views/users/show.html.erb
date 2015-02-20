@@ -1,12 +1,12 @@
 <% provide(:title, @user.name) %>
 
-<h2><%= @user.name %>'s Searches</h2>
+<h2><%= @user.name %>'s Saved Tweet Sentiments</h2>
 <ul>
-  <% @user.searches.each do |item| %>
+  <% @user.tweet_sentiments.each do |item| %>
     <li>
-      <%= link_to search.search_term, search_path(search) %>
+      <%= link_to @sentiment.search_term, tweet_sentiment_path(@sentiment) %>
       <% if current_user?(@user) %>
-         | <%= link_to "edit", edit_search_path(search) %>
+         | <%= link_to "delete", delete_tweet_sentiment_path(@sentiment) %>
       <% end %>
      </li>
   <% end %>

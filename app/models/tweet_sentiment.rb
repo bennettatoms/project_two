@@ -1,6 +1,6 @@
-class Tweet < ActiveRecord::Base
-  belongs_to :searches
-  
+class TweetSentiment < ActiveRecord::Base
+  belongs_to :user
+
   def self.search_tweets(term)
     address = parse_address(term)
     response = get_response(address)
@@ -51,3 +51,4 @@ class Tweet < ActiveRecord::Base
     end
   end
 end
+

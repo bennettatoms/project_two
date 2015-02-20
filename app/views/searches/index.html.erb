@@ -1,18 +1,36 @@
 <body>
   <div class="row search-analyze">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-2">
-        <%= form_tag('/tweets', method: "get") do %>
+        <%= form_tag(searches_path, method: "get") do %>
         <%= label_tag(:query, "Search for:") %>
-        <%= text_field_tag(:query, params[:term], placeholder: "e.g. Sally Jesse Raphael", size:60, autofocus: true) %>
+        <%= text_field_tag(:query, params[:term], placeholder: @term, size:60, autofocus: true) %>
         <%= submit_tag("Search") %>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-lg-4 analyze">
-      <% if signed_in? %>
-        <a href="#" class="btn btn-info btn-lg">Save Tweet Analysis</a>   
-      <% else %>
-        <a href="#" class="btn btn-primary disabled">Please Sign In</a>
-      <% end %>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-lg-4 save-sentiment-analysis">
+        <%= form_for @sentiment, url: {action: "create"} do |f| %>
+          <%= hidden_field_tag 'user_id', current_user.id  %>
+          <%= f.hidden_field :followed_event_id %>
+          <%= f.submit "Save Tweet Sentiment to Profile", class: 'btn btn-info btn-lg' %>
+        <% end %>
+
+
+
+        <!-- (current_user.tweet_sentiments.save(followed_event_id: user_event.id)) do |f| %> -->
+        <!-- <div class="hidden"><%#= f.hidden_field :followed_event_id %></div> -->
+        <%#= f.submit "Save Tweet Sentiment to Profile", class: 'btn btn-info btn-lg' %>
+        <%# end %>
+      <%# end %>  
+        <%#= form_for(:search, url: tweets) do |f| %>
+          <%#= f.select(:search_id, options_for_select(@tweets.map { |t| [t.search_term, t.sentiment_score]})) %>
+          <%#= f.hidden_field :search_term, value: @term %>
+          <%#= f.hidden_field :sentiment_score, value: @total %>              
+          <!-- <br> -->
+          <%#= f.submit "Save Analysis to Profile", class: 'btn btn-info btn-lg' %>
+        <%# end %>
+      <%# else %>
+        <!-- <a href="#" class="btn btn-primary disabled">Please Sign In to Save</a> -->
+      <%# end %>
     </div>
   </div>
      <br>
@@ -40,7 +58,7 @@
           <table class="table table-bordered">
 
             <p style="color:white"><strong><%= tweet[:text] %></strong></p>
-            <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %>, sentiment score: <strong><%= tweet[:sentiment] ? tweet[:sentiment]["score"] : 'not available' %></strong></p>
+            <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %>, sentiment score: <strong><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
           </table>
         <% end %>
       </ul>
