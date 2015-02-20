@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   # get '/users/:id/sentiments/:id' => 'tweet_sentiments#show', as: :tweet_sentiment
   # get '/search' => 'searches#new'  # search input text field and submit button
   # get '/search/:term' => 'searches#index', as: :results
+  delete '/tweet_sentiments/:id' => 'tweet_sentiments#destroy'
   delete '/signout' => 'sessions#destroy'
-  resources :tweet_sentiments, only: [:index, :show, :create, :delete]
+  resources :tweet_sentiments, only: [:index, :show, :create]
   resources :sessions, only: [:create]
   resources :users, except: [:new]
   resources :searches, only: [:index, :new]

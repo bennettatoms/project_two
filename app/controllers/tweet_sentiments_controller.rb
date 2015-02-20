@@ -1,4 +1,5 @@
 class TweetSentimentsController < ApplicationController
+  before_action :set_sentiment, only: [:show, :destroy]
   before_action :signed_in_user, except: [:index, :show]
   before_action :correct_user,   except: [:new, :create, :index, :show]
 
@@ -26,9 +27,9 @@ class TweetSentimentsController < ApplicationController
   end
 
   def destroy
-    @sentiment = TweetSentiment.find(params[:id])
     @sentiment.destroy
-    redirect_to user_path current_user, notice: "Tweet sentiment analysis deleted."
+    flash[:success] = "Tweet sentiment analysis deleted from your profile."
+    redirect_to user_path current_user #, notice: "Tweet sentiment analysis deleted."
   end  
 
   private
@@ -38,6 +39,15 @@ class TweetSentimentsController < ApplicationController
 
     def signed_in_user
       redirect_to signin_path, notice: "Please sign in." unless signed_in?
+    end
+    def set_sentiment
+      @sentiment = TweetSentiment.find(params[:id])
+    end
+
+    def correct_user
+      unless current_user?(@sentiment.user) || current_user.admin?
+        redirect_to user_path(current_user)
+      end
     end
 end
 
