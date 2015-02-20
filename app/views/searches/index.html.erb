@@ -8,11 +8,11 @@
       <% end %>
     </div>
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-lg-4 save-sentiment-analysis">
-        <%= form_for @sentiment, url: {action: "create"} do |f| %>
-          <%= hidden_field_tag 'user_id', current_user.id  %>
-          <%= f.hidden_field :followed_event_id %>
-          <%= f.submit "Save Tweet Sentiment to Profile", class: 'btn btn-info btn-lg' %>
-        <% end %>
+      <%= form_for(:tweet_sentiment, url: tweet_sentiments_path) do |f| %>
+        <%= f.hidden_field :search_term, value: @term %>
+        <%= f.hidden_field :sentiment_score, value: @total %>
+        <%= f.submit "Save Tweet Sentiment to Profile", class: 'btn btn-info btn-lg' %>
+      <% end %>
 
 
 

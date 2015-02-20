@@ -11,25 +11,28 @@ class TweetSentimentsController < ApplicationController
   end
 
   def create
-    @sentiment = TweetSentiment.new(tweet_sentiment_params)
-    current_user.tweet_sentiments << TweetSentiment.new(tweet_sentiment_params) # automagically sets user_id: current_user.id
-    # if @item is valid, it returns a truthy value
+    # has_many :through
+    # @sentiment = TweetSentiment.new(tweet_sentiment_params)
+    # current_user.tweet_sentiments << @sentiment
+    @sentiment = current_user.tweet_sentiments.new(tweet_sentiment_params) # automagically sets user_id: current_user.id
+    # p = tweet_sentiment_params
+    # @sentiment = TweetSentiment.new(search_term: p[:search_term], sentiment_score: p[:sentiment_score], user_id: current_user.id)
     if @sentiment.save
       flash[:success] = "Tweet sentiment analysis saved to your profile."
-      redirect_to user_path
+      redirect_to user_path current_user
     else
-      render results
+      redirect_to searches_path
     end
   end
 
   def destroy
     @sentiment = TweetSentiment.find(params[:id])
     @sentiment.destroy
-    redirect_to user_path, notice: "Tweet sentiment analysis deleted."
+    redirect_to user_path current_user, notice: "Tweet sentiment analysis deleted."
   end  
 
   private
-    def sentiment_params
+    def tweet_sentiment_params
       params.require(:tweet_sentiment).permit(:search_term, :sentiment_score)
     end
 
