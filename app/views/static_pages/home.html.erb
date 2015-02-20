@@ -3,6 +3,11 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 welcome-blurb">
     <h1>Welcome to TweetHeart!</h1>
-    <h4 class="blurb">TweetHeart searches twitter for the most recent tweets about a topic you're interested in, then performs sentiment analysis -- powered by AlchemyAPI -- on each of the tweets. The composite sentiment score tells you how positively or negatively twitter views that subject at the moment of your search. Once you've signed up, you can search by user, hashtag, or text, and even save searches to view sentiment trends over time. The heartbeat of twitter is at your fingertips... sign in and get searching!</h4>
+    <h4>TweetHeart searches twitter for the most recent tweets about a topic you're interested in, then performs sentiment analysis -- powered by AlchemyAPI -- on each of the tweets. The composite sentiment score tells you how positively or negatively twitter views that subject at the moment of your search. Once you've signed up, you can search by user, hashtag, or text, and even save searches to view sentiment trends over time. The heartbeat of twitter is at your fingertips. 
+    <br>
+    <h4><strong><%= link_to "Sign up", signup_path, style: "color:blue" %></strong> and get searching!</h4>
+    <br>
+
+    <p>Already have an account? <strong><%= link_to "Sign in", signin_path, style: "color:blue" %></strong> here.</p>
   </div>
 </div>

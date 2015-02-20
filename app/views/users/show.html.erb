@@ -1,13 +1,18 @@
 <% provide(:title, @user.name) %>
-
-<h2><%= @user.name %>'s Searches</h2>
-<ul>
-  <% @user.searches.each do |item| %>
-    <li>
-      <%= link_to search.search_term, search_path(search) %>
-      <% if current_user?(@user) %>
-         | <%= link_to "edit", edit_search_path(search) %>
+<div class="row">
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+    <h2><%= @user.name %></h2>
+    <br>
+    <h4>Saved Tweet Sentiments</h4>
+    <ul>
+      <% @user.tweet_sentiments.each do |sentiment| %>
+        <li>
+          <%= link_to sentiment.search_term, tweet_sentiment_path(sentiment.id) %>
+          <% if current_user?(@user) %>
+             | <%= link_to "delete", sentiment, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+         </li>
       <% end %>
-     </li>
-  <% end %>
-</ul>
+    </ul>
+  </div>
+</div>
