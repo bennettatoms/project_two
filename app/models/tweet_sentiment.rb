@@ -1,6 +1,8 @@
 class TweetSentiment < ActiveRecord::Base
   belongs_to :user
 
+  validates :search_term, presence: true
+
   def self.search_tweets(term)
     address = parse_address(term)
     response = get_response(address)
@@ -18,7 +20,7 @@ class TweetSentiment < ActiveRecord::Base
     baseurl = "https://api.twitter.com"
     path    = "/1.1/search/tweets.json"
     query   = URI.encode_www_form(
-      "q" => term, "count" => 10
+      "q" => term, "count" => 25
     )
     URI("#{baseurl}#{path}?#{query}")
   end

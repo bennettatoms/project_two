@@ -23,24 +23,6 @@ describe 'user pages' do
         expect(page).to have_selector('li', text: user.id)
       end
     end
-
-    describe 'delete links' do 
-      let!(:user1) { User.create(name: 'Bennett Adams', 
-                                 email: 'bennettadams46@gmail.com', 
-                                 password: 'icu812', 
-                                 password_confirmation: 'icu812') }
-      let!(:user2) { User.create(name: 'Sam Iam', 
-                                 email: 'samiam@gmail.com', 
-                                 password: 'foobar', 
-                                 password_confirmation: 'foobar') }
-      before { visit users_path }
-      it { should have_link('delete', href: user_path(user.first)) }
-
-      describe 'after clicking delete' do 
-        before { click_link('delete', match: :first) }
-        it { should_not have_content('Bennett Adams') }
-      end
-    end
   end
 
   describe 'show' do 
@@ -51,7 +33,7 @@ describe 'user pages' do
     before { visit user_path(user.id) }
 
     it { should have_title(user.name) }
-    it { should have_selector('h1', text: user.name) }
+    it { should have_selector('h2', text: user.name) }
   end
 
   describe 'new user page' do 
@@ -104,7 +86,6 @@ describe 'user pages' do
                                      password_confirmation: 'icu812') }
     before { visit edit_user_path(user_to_edit.id) }
 
-    it { should have_title('Edit Profile') }
     it { should have_selector('h1', text: 'Edit Profile') }
 
     describe 'update user' do 

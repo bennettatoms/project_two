@@ -4,7 +4,7 @@ class TweetSentimentsController < ApplicationController
   before_action :correct_user,   except: [:new, :create, :index, :show]
 
   def index
-    render action: :index
+    @sentiments = TweetSentiment.all
   end
 
   def show

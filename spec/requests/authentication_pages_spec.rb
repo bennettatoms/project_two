@@ -3,13 +3,13 @@ require 'rails_helper'
 describe 'Authentication' do 
   subject { page }
 
-  describe 'signin page' do 
+  describe 'sign in page' do 
     before { visit signin_path }
 
     it { should have_title('Sign In') }
     it { should have_content('Sign In') }
 
-    describe 'signin process' do 
+    describe 'sign in process' do 
       let(:submit) { 'Sign In' }
       let(:user) { User.create(name: 'Bennett Adams', 
                                email: 'bennettadams46@gmail.com', 

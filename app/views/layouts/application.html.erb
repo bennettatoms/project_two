@@ -9,19 +9,19 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-   
     
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-
   <body>
     <%= render 'layouts/header' %>
-    <%= yield %>
+    <div class="wrapper"><%= yield %></div>
+    <div class="footer">
+      <p>Website created by Bennett Adams. Visit my <a href="https://github.com/bennettatoms">GitHub</a> and <a href="https://www.linkedin.com/pub/bennett-adams/8/181/3b9">LinkedIn</a> profiles. Copyright (c) 2015. Powered by <a href="https://dev.twitter.com/">Twitter API</a> and <a href="http://www.alchemyapi.com/">Alchemy API</a></p>
+      <%#= render 'layouts/footer' %>
+    </div>
   </body>
-    <%= render 'layouts/footer' %>
 
    <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

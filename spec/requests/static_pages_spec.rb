@@ -6,14 +6,14 @@ describe 'static pages' do
   describe 'home page' do
     before { visit root_path }
 
-    it { should have_title('ProjectTwo') }
-    it { should have_selector('h1', text: 'Welcome!') }
+    it { should have_title('TweetHeart') }
+    it { should have_selector('h1', text: '!') }
   end
 
   describe 'about page' do
     before { visit about_path }
     
-    it { should have_title('About Me')}
-    it { should have_selector('h1', text: 'About Me') }
+    it { should have_title('TweetHeart')}
+    it { should have_selector('h1', text: 'About TweetHeart') }
   end
 end
