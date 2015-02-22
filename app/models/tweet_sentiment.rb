@@ -20,7 +20,7 @@ class TweetSentiment < ActiveRecord::Base
     baseurl = "https://api.twitter.com"
     path    = "/1.1/search/tweets.json"
     query   = URI.encode_www_form(
-      "q" => term, "count" => 25
+      "q" => term, "count" => 20
     )
     URI("#{baseurl}#{path}?#{query}")
   end

@@ -12,11 +12,14 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require_bootstrap.css
  *= require_self
 
 
-
 /*Footer */
+@import url(http://fonts.googleapis.com/css?family=Yellowtail);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,700italic);
+
 * {
   margin: 0;
 }
@@ -53,6 +56,51 @@ html, body {
   text-align: center;
 }
 
+.table-bordered {
+  border: 3px solid #C2D1E0;
+  border-radius: 5px;
+}
+
+table.table-sum tr.positive td.col-md-5 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+table.table-tweets td.col-md-5 p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-color: black;
+}
+/*
+.table > thead > tr > td.positive,
+.table > tbody > tr > td.positive,
+.table > tfoot > tr > td.positive,
+.table > thead > tr > th.positive,
+.table > tbody > tr > th.positive,
+.table > tfoot > tr > th.positive,
+.table > thead > tr.positive > td,
+.table > tbody > tr.positive > td,
+.table > tfoot > tr.positive > td,
+.table > thead > tr.positive > th,
+.table > tbody > tr.positive > th,
+.table > tfoot > tr.positive > th {
+  background-color: #B8E62E;
+}
+
+tbody > tr > td > p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  background-color: rgba(241,111,92,0.4);
+}
+
+tbody > tr {
+  background-color: rgba(241,111,92,0.4);
+}
+
+.table-sum {
+  background-color: #B8E62E;
+}*/
 /*.search-analyze {
   position: relative;
   float: right;
@@ -61,15 +109,56 @@ html, body {
   margin-bottom: 30px;
   margin-top: 30px;
 }*/
-
+.table-tweets {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(241,111,92,0.4);
+}
 .tweet-search {
   text-align: center;
+  color: #C2D1E0;
   top: 0;
   left: 0;
   padding-top: 15px;
   margin-bottom: 20px;
 }
 
+.search-results-negative {
+  height: 100%;
+  background-image: no-repeat 0 0;
+  background-attachment: fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.search-results-positive {
+  height: 100%;
+  background-image: no-repeat 0 0;
+  background-attachment: fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.tweets p {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 468px;
+}
+
+.table {
+  background-color: #C2D1E0;
+  opacity: 0.3;
+}
 .save-sentiment-analysis {
   text-align: center;
   top: 0;
