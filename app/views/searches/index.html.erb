@@ -1,5 +1,5 @@
 <% if @total < 0 %>  
-  <div class="search-results-negative" style="background-image:url(<%= asset_path 'thumbs-down-button.png' %>);background-attachment:fixed">
+  <div class="search-results-negative" style="background-image:url(<%= asset_path 'redthumb_transparent.png' %>);background-attachment:fixed;background-repeat: no-repeat;background-position: center">
     <div class="row search-analyze col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 tweet-search">
           <%= form_tag(searches_path, method: "get") do %>
@@ -22,17 +22,17 @@
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <% if @total < 0 %>
-          <table class="table table-bordered table-sum" style="background:rgba(235,43,40,(@total/15))" height:"50px">
+          <table class="table table-bordered table-sum">
             <tr class="danger">
-              <td class="col-md-5 col-md-offset-2">Current sentiment total for <%= @term %>:</td>
-              <td class="col-md-3" style="background:rgba(235,43,40,(@total/15) color:white" height:"50px"><strong><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size: 20px">Current sentiment rating for <%= @term %>:</td>
+              <td class="col-md-3" style="background:rgba(235,43,40,0.9) color:white" height:"50px"><strong style="font-size: 20px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% else %>  
-          <table class="table table-bordered table-sum" style="background:rgba(184,230,46,(@total/15))" height:"50px">
+          <table class="table table-bordered table-sum" style="background:rgba(170,204,98,0.9)" height:"60px">
             <tr class="positive">
-              <td class="col-md-5 col-md-offset-2">Current sentiment total for <%= @term %>:</td>
-              <td class="col-md-3"><strong><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size: 20px">Current sentiment rating for <%= @term %>:</td>
+              <td class="col-md-3" style="color:white"><strong style="font-size: 20px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% end %>
@@ -42,16 +42,16 @@
       <div class="col-xs-8 col-sm-offset-2 col-sm-8 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
         <h3><%= @term ? "Your search for #{@term} yielded:" : "Example search: Sally Jesse Raphael" %></h3> 
           <% @tweets.each do |tweet| %>
-            <table class="table table-bordered table-tweets" style="background-color:rgba(92,92,92,0.4)">
+            <table class="table table-bordered table-tweets" style="background-color:rgba(92,92,92,0.6)">
               <td class="col-md-5 col-md-offset-2">
-                <p><strong><%= tweet[:text] %></strong></p>
+                <p><strong style="color:white;font-size: 16px"><%= tweet[:text] %></strong></p>
                 <br>
                 <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %></p>
               </td>
               <td class="col-md-3">
                 <p>Sentiment score:</p>
                 <br>
-                <p><strong><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
+                <p style="size:18px"><strong style="color:white;font-size: 20px"><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
               </td>
             </table>
           <% end %>
@@ -60,7 +60,7 @@
     </div>
   </div>
 <% else %>
-  <div class="search-results-positive" style="background-image:url(<%= asset_path 'thumbs-up-button.png' %>);background-attachment:fixed">
+  <div class="search-results-positive" style="background-image:url(<%= asset_path 'greenthumb_transparent.png' %>);background-attachment:fixed;background-repeat: no-repeat;background-position: center">
     <div class="row search-analyze col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 tweet-search">
           <%= form_tag(searches_path, method: "get") do %>
@@ -84,17 +84,17 @@
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <% if @total < 0 %>
-          <table class="table table-bordered table-sum" style="background:rgba(235,43,40,(@total/15))" height:"50px">
+          <table class="table table-bordered table-sum" style="background:rgb(235,43,40" height:"50px">
             <tr class="danger">
-              <td class="col-md-5 col-md-offset-2">Current sentiment total for <%= @term %>:</td>
-              <td class="col-md-3" style="background:rgba(235,43,40,(@total/15) color:white" height:"50px"><strong><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size:20px">Current sentiment rating for <%= @term %>:</td>
+              <td class="col-md-3" style="background:rgba(235,43,40,0.9) color:white;font-size:20px" height:"50px"><strong><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% else %>  
-          <table class="table table-bordered table-sum" style="background:rgba(184,230,46,(@total/15))" height:"50px">
+          <table class="table table-bordered table-sum" style="background:rgba(170,204,98,0.9)" height:"50px">
             <tr class="positive">
-              <td class="col-md-5 col-md-offset-2">Current sentiment total for <%= @term %>:</td>
-              <td class="col-md-3"><strong><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size:20px">Current sentiment rating for <%= @term %>:</td>
+              <td class="col-md-3" style="color:white"><strong style="font-size: 20px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% end %>
@@ -102,18 +102,18 @@
     </div>
     <div class="row">
       <div class="col-xs-8 col-sm-offset-2 col-sm-8 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-        <h3><%= @term ? "Your search for #{@term} yielded:" : "Example search: Sally Jesse Raphael" %></h3> 
+        <h3 style="color:white"><%= @term ? "Your search for #{@term} yielded:" : "Example search: Sally Jesse Raphael" %></h3> 
           <% @tweets.each do |tweet| %>
-            <table class="table table-bordered tweets" style="background-color:rgba(92,92,92,0.4)">
+            <table class="table table-bordered tweets" style="background-color:rgba(92,92,92,0.6)">
               <td>
-                <p><strong><%= tweet[:text] %></strong></p>
+                <p><strong style="color:white;font-size: 16px"><%= tweet[:text] %></strong></p>
                 <br>
                 <p>-<%= tweet[:user] %> at <%= tweet[:created_at] %></p>
               </td>
               <td>
                 <p>Sentiment score:</p> 
                 <br>
-                <p><strong><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
+                <p><strong style="color:white;font-size: 20px"><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
               </td>
             </table>
           <% end %>

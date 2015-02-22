@@ -47,6 +47,17 @@ html, body {
   color: #C2D1E0;
 }
 
+.jumbotron-container img { 
+  text-align: center;
+  padding-left: 15%;
+  max-height: 80px; 
+  margin-bottom: 10px;
+}
+
+.container h1 {
+  text-align: center;
+}
+
 .blurb h4 {
   text-align: center;
   line-height: 1.5;
@@ -56,11 +67,16 @@ html, body {
   text-align: center;
 }
 
+.about-search, h4 {
+  text-align: center;
+  font-size: 28px;
+}
+
 .table-bordered {
   border: 3px solid #C2D1E0;
   border-radius: 5px;
 }
-
+/*
 table.table-sum tr.positive td.col-md-5 {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
@@ -72,7 +88,7 @@ table.table-tweets td.col-md-5 p {
   font-size: 16px;
   font-color: black;
 }
-/*
+
 .table > thead > tr > td.positive,
 .table > tbody > tr > td.positive,
 .table > tfoot > tr > td.positive,
@@ -108,11 +124,11 @@ tbody > tr {
   height: 50px;
   margin-bottom: 30px;
   margin-top: 30px;
-}*/
+}
 .table-tweets {
   font-family: 'Roboto', sans-serif;
   background-color: rgba(241,111,92,0.4);
-}
+}*/
 .tweet-search {
   text-align: center;
   color: #C2D1E0;
@@ -120,24 +136,6 @@ tbody > tr {
   left: 0;
   padding-top: 15px;
   margin-bottom: 20px;
-}
-
-.search-results-negative {
-  height: 100%;
-  background-image: no-repeat 0 0;
-  background-attachment: fixed;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.search-results-positive {
-  height: 100%;
-  background-image: no-repeat 0 0;
-  background-attachment: fixed;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 
 .tweets p {

@@ -2,17 +2,33 @@
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
     <h1>All Saved Tweet Sentiments</h1>
-    <ul>
-      <% @sentiments.each do |sentiment| %>
-        <li>
-          <%= link_to sentiment.search_term, tweet_sentiment_path(sentiment.id) %>
-          <% if current_user.admin? && !current_user?(sentiment.user) %>
-            | <%= link_to 'delete', sentiment, method: :delete, data: 
-            { confirm: 'Are you sure?' } %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+
+    <table id="all-tweet-sentiments-index" class="tablesorter table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Date/Time of Search</th>
+          <th>Search Term</th>
+          <th>Sentiment Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sentiments.each do |sentiment| %>
+          <tr>
+            <td><%= sentiment.created_at %></td>
+            <td><%= link_to sentiment.search_term,tweet_sentiment_path(sentiment.id) %></td>
+            <td><%= sentiment.sentiment_score %></td>
+            <% if current_user.admin? && !current_user?(sentiment.user) %>
+            <td><%= link_to 'delete', sentiment, method: :delete, data: 
+              { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+  <script>$(function(){
+  $("#all-tweet-sentiments-index").tablesorter();
+});</script>
 </div>
+
 

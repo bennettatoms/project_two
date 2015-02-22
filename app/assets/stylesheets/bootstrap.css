@@ -4835,8 +4835,8 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding: 30px 15px;
-  margin-bottom: 30px;
+  padding: 10px 10px 10px 15px;
+  margin-bottom: 35px;
   color: inherit;
   background-color: #1c1e22;
 }
@@ -4845,7 +4845,7 @@ a.badge:focus {
   color: inherit;
 }
 .jumbotron p {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 21px;
   font-weight: 200;
 }
@@ -4854,6 +4854,7 @@ a.badge:focus {
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
+  padding-left: 80px;
   border-radius: 6px;
 }
 .jumbotron .container {
@@ -4865,7 +4866,7 @@ a.badge:focus {
   }
   .container .jumbotron,
   .container-fluid .jumbotron {
-    padding-left: 60px;
+    padding-left: 80px;
     padding-right: 60px;
   }
   .jumbotron h1,
