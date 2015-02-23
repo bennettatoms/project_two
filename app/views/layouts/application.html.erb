@@ -4,25 +4,30 @@
     <meta charset="utf-8" />
 
     <title><%= full_title(yield(:title)) %></title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,700italic&effect=fire-animation' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.tablesorter.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.tablesorter.widgets.js"></script>
     
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
   <body>
     <%= render 'layouts/header' %>
     <div class="wrapper"><%= yield %></div>
-    <div class="footer">
-      <p>Website created by Bennett Adams. Visit my <a href="https://github.com/bennettatoms">GitHub</a> and <a href="https://www.linkedin.com/pub/bennett-adams/8/181/3b9">LinkedIn</a> profiles. Copyright (c) 2015. Powered by <a href="https://dev.twitter.com/">Twitter API</a> and <a href="http://www.alchemyapi.com/">Alchemy API</a></p>
-      <%#= render 'layouts/footer' %>
-    </div>
+    <%= render 'layouts/footer' %>
   </body>
-
+ 
+  
    <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 

@@ -1,0 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Yellowtail);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,700italic);
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -30px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.footer, .push {
+  height: 30px; /* .push must be the same height as .footer */
+}
+
+.footer {
+  text-align: center, center;
+  width: 90%;
+  background-color: #3a3f44;
+  opacity: 0.8;
+  color: #C2D1E0;
+}
+
+.jumbotron-container {
+  display: inline;
+}
+
+.jumbotron-container img.logo { 
+  width: 40%;
+  padding-top: 15px;
+  min-height: 80px;
+  max-height: 100px; 
+  margin-bottom: 10px;
+}
+.jumbotron-container img.tag { 
+  float: right;
+  padding-left: 75%;
+  padding-top: 15px;
+  margin-top: -50px;
+  max-height: 50px;
+}
+
+.welcome-blurb h1 {
+  text-align: center;
+}
+
+.welcome-blurb h4 {
+  text-align: center;
+  line-height: 2em;
+}
+
+.about-search-blurb h3 {
+  text-align: center;
+}
+.container .about-search-blurb h3, h4 {
+  text-align: center;
+}
+
+table.table-sum {
+  min-height: 60px;
+  text-align: center;
+  border-style: outset;
+  border-radius: 10px;
+  border-color: transparent;
+  font-family: "Roboto", serif; font-weight: 400;
+  border-width: 2px;
+}
+/*
+.tweets tbody {
+  background-color:rgba(92,92,92,0.6);
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  line-height: 16px;
+  border-color: #eee #ddd #bbb;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  margin: 10px 5px;
+  padding: 0 16px 16px 16px;
+  max-width: 468px;
+}*/
+
+
