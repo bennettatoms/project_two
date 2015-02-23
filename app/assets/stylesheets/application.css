@@ -13,6 +13,7 @@
  *
  *= require_tree .
  *= require_bootstrap.css
+ *= require_bootstrap_overrides.css
  *= require_self
 
 

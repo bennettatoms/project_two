@@ -1,12 +1,19 @@
 <section class="container">
 
   <!-- Main component for a primary marketing message or call to action -->
-  <div class="jumbotron-container">
-    <img alt='' src='' width="4%"/>
-    <img alt="Thumbs Up" src="/assets/greenthumb.png" width="13%"/>
-    <img alt="TweetHeart logo" src="/assets/TweetHeart.png" width="65%"/>
-    <img alt="Thumbs Up" src="/assets/redthumb.png" width="13%"/>
-  </div>
+  <% if request.path == root_path %>
+    <div class="jumbotron-container-home">
+      <img alt='' src='' width="4%"/>
+      <img alt="Thumbs Up" src="/assets/greenthumb.png" width="13%"/>
+      <img alt="TweetHeart logo" src="/assets/TweetHeart.png" width="65%"/>
+      <img alt="Thumbs Up" src="/assets/redthumb.png" width="13%"/>
+    </div>
+  <% else %>
+    <div class="jumbotron-container">
+      <img class="logo" alt="TweetHeart logo" src="/assets/TweetHeart.png" width="50%"/>
+      <img class="tag" alt="TweetHeart tagline" src="/assets/tweetheart_tagline.png"/>
+    </div>
+  <% end %>
    <!-- Static navbar -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -17,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">TweetHeart</a>
+        <a class="navbar-brand" href="/"><font face="Yellowtail">TweetHeart</font></a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

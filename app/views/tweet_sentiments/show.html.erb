@@ -1,8 +1,30 @@
 <% provide(:title, @sentiment.search_term) %>
 <div class="row">
   <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-    <h5><%= @sentiment.search_term %></h5>
-    <h5><%= @sentiment.sentiment_score %></h5>
-    <h5><%= @sentiment.created_at %></h5>
+    <table id="all-tweet-sentiments-index" class="table-striped table-hover tablesorter" data-sortlist="[[0,0],[2,0]]">
+      <thead>
+        <tr>
+          <th class="col-md-2">Date/Time of Search</th>
+          <th class="col-md-2">Search Term</th>
+          <th class="col-md-2">Sentiment Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @sentiment.created_at.strftime('%v ~ %T') %></td>
+          <% if @sentiment.sentiment_score >= 0 %>
+            <td><strong style="color:rgb(170,204,98)"><%= @sentiment.search_term %></strong></td>
+            <td><strong style="color:rgb(170,204,98)"><%= @sentiment.sentiment_score %></strong></td>
+          <% else %>
+            <td><strong style="color:rgb(235,43,40)"><%= @sentiment.search_term %></strong></td>
+            <td><strong style="color:rgb(235,43,40)"><%= @sentiment.sentiment_score %></strong></td>
+          <% end %>    
+          <% if current_user.admin? && !current_user?(sentiment.user) %>
+            <td><%= link_to 'delete', sentiment, method: :delete, data: 
+            { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
