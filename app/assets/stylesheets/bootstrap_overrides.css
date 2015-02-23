@@ -29,10 +29,11 @@ html, body {
 }
 
 .jumbotron-container {
-  display: inline;
+
 }
 
-.jumbotron-container img.logo { 
+.jumbotron-container img.logo {
+  display: inline-block; 
   width: 40%;
   padding-top: 15px;
   min-height: 80px;
@@ -40,11 +41,14 @@ html, body {
   margin-bottom: 10px;
 }
 .jumbotron-container img.tag { 
-  float: right;
-  padding-left: 75%;
-  padding-top: 15px;
-  margin-top: -50px;
-  max-height: 50px;
+  display: inline-block;
+  width: 25%;
+  position: fixed;
+  right: 8%;
+  margin-top: 60px;
+  /*margin-left: 35%;*/
+  max-height: 40px;
+  max-width: 280px;
 }
 
 .welcome-blurb h1 {
