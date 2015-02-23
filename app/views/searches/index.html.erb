@@ -22,17 +22,17 @@
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <% if @total < 0 %>
-          <table class="table table-bordered table-sum">
+          <table class="table table-bordered table-sum" style="background:rgb(235,43,40,0.9)">
             <tr class="danger">
-              <td class="col-md-5 col-md-offset-2" style="color:white;font-size: 20px">Current sentiment rating for "<%= @term %>":</td>
-              <td class="col-md-3" style="background:rgba(235,43,40,0.9) color:white" height:"50px"><strong style="font-size: 20px"><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size: 24px">Current sentiment rating for "<%= @term %>"</td>
+              <td class="col-md-3" style="color:white"><strong style="font-size: 24px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% else %>  
-          <table class="table table-bordered table-sum" style="background:rgba(170,204,98,0.9)" height:"60px">
+          <table class="table table-bordered table-sum" style="background:rgba(170,204,98,0.9)">
             <tr class="positive">
-              <td class="col-md-5 col-md-offset-2" style="color:white;font-size: 20px">Current sentiment rating for "<%= @term %>":</td>
-              <td class="col-md-3" style="color:white"><strong style="font-size: 20px"><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size: 24px">Current sentiment rating for "<%= @term %>"</td>
+              <td class="col-md-3" style="color:white"><strong style="font-size: 24px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% end %>
@@ -51,7 +51,7 @@
               <td class="col-md-3">
                 <p>Sentiment score:</p>
                 <br>
-                <p style="size:18px"><strong style="color:white;font-size: 20px"><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
+                <p><strong style="color:white;font-size: 20px"><%= tweet[:sentiment] ? (tweet[:sentiment]["score"] ? tweet[:sentiment]["score"] : 'not available') : 'not available' %></strong></p>
               </td>
             </table>
           <% end %>
@@ -84,17 +84,17 @@
     <div class="row">
       <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <% if @total < 0 %>
-          <table class="table table-bordered table-sum" style="background:rgb(235,43,40,0.9)" height:"50px">
+          <table class="table table-bordered table-sum" style="background:rgb(235,43,40,0.9)";>
             <tr class="danger">
-              <td class="col-md-5 col-md-offset-2" style="color:white;font-size:20px">Current sentiment rating for "<%= @term %>":</td>
-              <td class="col-md-3" style="background:rgba(235,43,40,0.9) color:white;font-size:20px" height:"50px"><strong><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size:24px">Current sentiment rating for "<%= @term %>"</td>
+              <td class="col-md-3" style="color:white"><strong style="font-size:24px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% else %>  
-          <table class="table table-bordered table-sum" style="background:rgba(170,204,98,0.9)" height:"50px">
+          <table class="table table-bordered table-sum" style="background:rgba(170,204,98,0.9)">
             <tr class="positive">
-              <td class="col-md-5 col-md-offset-2" style="color:white;font-size:20px">Current sentiment rating for "<%= @term %>":</td>
-              <td class="col-md-3" style="color:white"><strong style="font-size: 20px"><%= @total.to_s %></strong></td>
+              <td class="col-md-5 col-md-offset-2" style="color:white;font-size:24px">Current sentiment rating for "<%= @term %>"</td>
+              <td class="col-md-3" style="color:white"><strong style="font-size: 24px"><%= @total.to_s %></strong></td>
             </tr>
           </table>  
         <% end %>
