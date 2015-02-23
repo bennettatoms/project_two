@@ -3,15 +3,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 welcome-blurb">
-      <h1><font face="Yellowtail">Welcome to TweetHeart!</font></h1>
-      <h4>TweetHeart searches twitter for the most recent tweets about a topic of interest, then performs sentiment analysis -- powered by AlchemyAPI -- on each of the tweets. The composite sentiment rating indicates how positively or negatively twitter views that subject at the moment of your search. Once you've signed up, you can search by user, hashtag, or text, and even save your searches to view sentiment trends over time.</h4>
-      <h4>The heartbeat of twitter is at your fingertips.</h4>
-      <br>
+      <h1>Welcome to TweetHeart!</h1>
+      <h4>TweetHeart searches twitter for the most recent tweets about a topic of interest, then performs sentiment analysis (powered by AlchemyAPI) on each of the tweets. The composite sentiment rating indicates how positively or negatively twitter views that subject at the moment of your search. Once you've signed up, you can search by user, hashtag, or text, and even save your searches to view sentiment trends over time.</h4>
+      <h3>The heartbeat of twitter is at your fingertips...</h3><br>
       <% if !signed_in? %>
-        <h4><strong><%= link_to "Sign up", signup_path, style: "color:#b5e62e" %></strong> and get searching!</h4>
-        <br>
-        <p>Already have an account? <strong><%= link_to "Sign in", signin_path, style: "color:#b5e62e" %></strong> here.</p>
+        <h5><strong><%= link_to "Sign up", signup_path, style: "color:#b5e62e" %></strong> and get searching! Already have an account? <strong><%= link_to "Sign in", signin_path, style: "color:#b5e62e" %></strong> here.</h5>
       <% end %>
+      <br>
     </div>
+    <br>
   </div>
 </div>

@@ -19,7 +19,7 @@
             <td><strong style="color:rgb(235,43,40)"><%= @sentiment.search_term %></strong></td>
             <td><strong style="color:rgb(235,43,40)"><%= @sentiment.sentiment_score %></strong></td>
           <% end %>    
-          <% if current_user.admin? && !current_user?(sentiment.user) %>
+          <% if current_user.admin? && !current_user?(@sentiment.user) %>
             <td><%= link_to 'delete', sentiment, method: :delete, data: 
             { confirm: 'Are you sure?' } %></td>
           <% end %>

@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Yellowtail);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,700,700italic);
 
+/*Footer*/
+
 * {
   margin: 0;
 }
@@ -21,52 +23,93 @@ html, body {
 }
 
 .footer {
-  text-align: center, center;
+  text-align: center;
   width: 90%;
+  margin: auto;
   background-color: #3a3f44;
   opacity: 0.8;
   color: #C2D1E0;
 }
 
-.jumbotron-container {
-
+.jumbotron-container-home {
+  max-height: 150px;
 }
 
-.jumbotron-container img.logo {
+.jumbotron-container-home img {
+  max-height: 150px;
+  max-width: 800px;
+  padding: 10px 10px 10px 10px;
+}
+
+.jumbotron-container-away {
+  max-height: 100px;
+}
+
+.jumbotron-container-away img.logo {
   display: inline-block; 
-  width: 45%;
-  padding-top: 15px;
+  padding: 10px 10px 10px 10px;
   min-height: 80px;
   max-height: 100px; 
   margin-bottom: 10px;
 }
-.jumbotron-container img.tag { 
-  display: inline-block;
-  margin-top: 60px;
+.jumbotron-container-away img.blank { 
 
-  /*width: 25%;
-  position: fixed;
-  right: 8%;
-  
-  /*margin-left: 35%;*/
+}
+
+.jumbotron-container-away img.tag { 
+  display: inline-block;
+  margin-top: 40px;
   max-height: 40px;
   max-width: 280px;
+  padding: 5px 5px 5px 5px;
 }
 
 .welcome-blurb h1 {
   text-align: center;
+  font-family: "Yellowtail";
+  font-size: 3.5em;
 }
 
 .welcome-blurb h4 {
   text-align: center;
-  line-height: 2em;
+  font-family: "Roboto", serif; font-weight: 400;
+  font-size: 1.5em;
+  line-height: 1.5em;
 }
 
-.about-search-blurb h3 {
+.welcome-blurb h3 {
+  text-align: center;
+  font-family: "Yellowtail";
+  font-size: 2.5em;
+}
+
+.welcome-blurb h5 {
+  text-align: center;
+  font-family: "Roboto", serif; font-weight: 400;
+  font-size: 1em;
+}
+
+.about-search-blurb {
   text-align: center;
 }
-.container .about-search-blurb h3, h4 {
-  text-align: center;
+
+.about-search-blurb h2 {
+  font-family: "Yellowtail";
+  font-size: 3.5em;
+}
+.about-search-blurb h3 {
+  font-family: "Yellowtail";
+  font-size: 2.5em;
+}
+
+.about-search-blurb h4 {
+  font-family: "Roboto", serif; font-weight: 400;
+  font-size: 1.5em;
+}
+
+.about-search-blurb h5 {
+  font-family: "Roboto", serif; font-weight: 400;
+  font-size: 1.5em;
 }
 
 table.table-sum {
@@ -77,6 +120,22 @@ table.table-sum {
   border-color: transparent;
   font-family: "Roboto", serif; font-weight: 400;
   border-width: 2px;
+}
+
+.about-tweetheart {
+  line-height: 1.5;
+}
+.about-tweetheart h1 {
+  text-align: center;
+  font-family: "Yellowtail";
+  font-size: 3.5em;
+}
+
+.about-tweetheart h4 {
+  text-align: center;
+  font-family: "Roboto", serif; font-weight: 400;
+  font-size: 1.5em;
+  line-height: 1.5em;
 }
 /*
 .tweets tbody {
