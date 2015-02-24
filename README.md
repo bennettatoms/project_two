@@ -8,7 +8,9 @@ TweetHeart mines the Twitter API for tweets pertaining to your interests, with A
 
 #####[Trello](https://trello.com/b/7LezrZcm/tweet-analysis)
 
-#####[Crude mockup sketch](http://imgur.com/6Dje4XJ)
+#####![Crude ERD](http://i.imgur.com/eX4UHiR.jpg)
+
+#####![Crude mockup sketch](http://i.imgur.com/6Dje4XJ.jpg)
 
 ## Technologies Used
 
