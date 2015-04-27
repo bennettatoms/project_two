@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe TweetSentiment, :type => :model do
   let(:tweet_sentiment) { TweetSentiment.new(search_term: "Abe Vigoda", 
                                              sentiment_score: 1.7) }
+  subject { tweet_sentiment }
   
   it { should respond_to(:search_term) }
   it { should respond_to(:sentiment_score) }

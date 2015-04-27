@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe TweetSentimentsController, :type => :controller do
-  let(:tweet_sentiment1) { TweetSentiment.create(search_term: "Molly Ringwald", 
-                                                 sentiment_score: 4.3) }
-  let(:tweet_sentiment2) { TweetSentiment.create(search_term: "Abe Vigoda", 
-                                                 sentiment_score: -8.3) }
+  let(:user)             { FactoryGirl.create(:user) }
+  let(:tweet_sentiment1) { FactoryGirl.create(:tweet_sentiment, user: user) }
+  let(:tweet_sentiment2) { FactoryGirl.create(:tweet_sentiment, user: user) }
+  before { sign_in user, no_capybara: true }
+
   describe 'GET #index' do
     it 'renders index' do # loads the page
       get :index
@@ -13,7 +14,7 @@ RSpec.describe TweetSentimentsController, :type => :controller do
 
     it 'populate an array of tweet sentiments' do
       get :index
-      expect(assigns(:tweet_sentiments)).to eq([tweet_sentiment1, tweet_sentiment2])
+      expect(assigns(:sentiments)).to eq([tweet_sentiment1, tweet_sentiment2])
     end
   end
 
@@ -25,41 +26,42 @@ RSpec.describe TweetSentimentsController, :type => :controller do
 
     it 'assigns correct tweet sentiment' do
       get :show, id: tweet_sentiment1.id
-      expect(assigns(:tweet_sentiment)).to eq(tweet_sentiment1)
+      expect(assigns(:sentiment)).to eq(tweet_sentiment1)
     end
   end
 
-   describe 'POST #create' do
+  describe 'POST #create' do
+    let(:user) { FactoryGirl.create(:user) }
+    before { sign_in user, no_capybara: true }
+    
     context 'valid attributes' do
-      let(:valid_attributes) { { search_term: "Abe Vigoda", 
-                                 sentiment_score: -8.3 } }
       it 'create new tweet sentiment' do
         expect{
-          post :create, tweet_sentiment: valid_attributes
+          post :create, tweet_sentiment: FactoryGirl.attributes_for(:tweet_sentiment)
         }.to change(TweetSentiment, :count).by(1)
       end
 
       it 'redirects to current user page' do
-        post :create, tweet_sentiment: valid_attributes
-        expect(response).to redirect_to(user_path(current_user))
+        post :create, tweet_sentiment: FactoryGirl.attributes_for(:tweet_sentiment)
+        expect(response).to redirect_to(user_path(user))
       end
     end
   end
 
   describe 'DELETE #destroy' do
     it 'deletes requested tweet sentiment' do
-      tweet_sentiment_to_remove = TweetSentiment.create(search_term: 
-                                    "Molly Ringwald", sentiment_score: 4.3)
+      tweet_sentiment_to_remove = FactoryGirl.create(:tweet_sentiment, user: user)
+
       expect{
         delete :destroy, id: tweet_sentiment_to_remove.id
       }.to change(TweetSentiment, :count).by(-1)
     end
 
     it 'redirects to current user page' do
-      tweet_sentiment_to_remove = TweetSentiment.create(search_term: 
-                                    "Molly Ringwald", sentiment_score: 4.3)
+      tweet_sentiment_to_remove = FactoryGirl.create(:tweet_sentiment, user: user)
+
       delete :destroy, id: tweet_sentiment_to_remove.id
-      expect(response).to redirect_to(user_path(current_user))
+      expect(response).to redirect_to(user_path(user))
     end
   end
 end
