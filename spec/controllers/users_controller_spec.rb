@@ -16,19 +16,14 @@ RSpec.describe UsersController, :type => :controller do
 
   describe 'POST #create' do 
     context 'valid attributes' do 
-      let(:valid_attributes) { { name: 'Bennett Adams', 
-                                 email: 'bennettadams46@gmail.com', 
-                                 password: 'icu812', 
-                                 password_confirmation: 'icu812' } }
-
       it 'create new user' do 
         expect{
-          post :create, user: valid_attributes
+          post :create, user: FactoryGirl.attributes_for(:user)
         }.to change(User, :count).by(1)
       end
 
       it 'redirects to users#show' do 
-        post :create, user: valid_attributes
+        post :create, user: FactoryGirl.attributes_for(:user)
         expect(response).to redirect_to(user_path(User.last.id))
       end
     end
@@ -50,10 +45,8 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe 'GET #show' do 
-    let(:user) { User.create(name: 'Bennett Adams', 
-                             email: 'bennettadams46@gmail.com', 
-                             password: 'icu812', 
-                             password_confirmation: 'icu812') }
+    let(:user) { FactoryGirl.create(:user) }
+
     it 'renders show' do 
       get :show, id: user.id
       expect(response).to render_template(:show)
@@ -66,14 +59,9 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe 'GET #index' do 
-    let(:user1) { User.create(name: 'Bennett Adams', 
-                              email: 'bennettadams46@gmail.com', 
-                              password: 'icu812', 
-                              password_confirmation: 'icu812') }
-    let(:user2) { User.create(name: 'Sam Iam', 
-                              email: 'samiam@gmail.com', 
-                              password: 'foobar', 
-                              password_confirmation: 'foobar') }
+    let(:user1) { FactoryGirl.create(:user) }
+    let(:user2) { FactoryGirl.create(:user) }
+
     it 'renders index' do 
       get :index
       expect(response).to render_template(:index)
@@ -86,10 +74,9 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe 'GET #edit' do 
-    let(:user_to_edit) { User.create(name: 'Bennett Adams', 
-                                     email: 'bennettadams46@gmail.com', 
-                                     password: 'icu812', 
-                                     password_confirmation: 'icu812') }
+    let(:user_to_edit) { FactoryGirl.create(:user) }
+    before { sign_in user_to_edit, no_capybara: true }
+
     it 'renders edit' do 
       get :edit, id: user_to_edit.id
       expect(response).to render_template(:edit)
@@ -102,19 +89,19 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe 'PATCH #update' do 
-    let(:user_to_edit) { User.create(name: 'Bennett Adams', 
-                                     email: 'bennettadams46@gmail.com', 
-                                     password: 'icu812', 
-                                     password_confirmation: 'icu812') }
+    let(:user_to_edit) { FactoryGirl.create(:user, name: "Cabbage Monkey") }
+
+    before { sign_in user_to_edit, no_capybara: true }
+
     context 'valid attributes' do 
       it 'updates user' do 
-        patch :update, id: user_to_edit.id, user: { name: 'The One and Only' }
+        patch :update, id: user_to_edit.id, user: { name: 'Sebadoh Geranium' }
         user_to_edit.reload
-        expect(user_to_edit.name).to eq('The One and Only')
+        expect(user_to_edit.name).to eq('Sebadoh Geranium')
       end
 
       it 'redirects to users#show' do 
-        patch :update, id: user_to_edit.id, user: { name: 'The One and Only' }
+        patch :update, id: user_to_edit.id, user: { name: 'Sebadoh Geranium' }
         expect(response).to redirect_to(user_path(user_to_edit.id))
       end
     end
@@ -123,7 +110,7 @@ RSpec.describe UsersController, :type => :controller do
       it 'does not update user' do 
         patch :update, id: user_to_edit.id, user: { name: '' }
         user_to_edit.reload
-        expect(user_to_edit.name).to eq('Bennett Adams')
+        expect(user_to_edit.name).to eq('Cabbage Monkey')
       end
 
       it 're-renders edit' do 
@@ -135,20 +122,22 @@ RSpec.describe UsersController, :type => :controller do
 
   describe 'DELETE #destroy' do 
     it 'deletes requested user' do 
-      user_to_remove = User.create(name: 'Bennett Adams', 
-                                   email: 'bennettadams46@gmail.com', 
-                                   password: 'icu812', 
-                                   password_confirmation: 'icu812')
+      user_to_remove = FactoryGirl.create(:user)
+      admin          = FactoryGirl.create(:admin)
+
+      sign_in admin, no_capybara: true
+
       expect{
         delete :destroy, id: user_to_remove.id
       }.to change(User, :count).by(-1)
     end
 
     it 'redirects to index' do 
-      user_to_remove = User.create(name: 'Bennett Adams', 
-                                   email: 'bennettadams46@gmail.com', 
-                                   password: 'icu812', 
-                                   password_confirmation: 'icu812')
+      user_to_remove = FactoryGirl.create(:user)
+      admin          = FactoryGirl.create(:admin)
+
+      sign_in admin, no_capybara: true 
+      
       delete :destroy, id: user_to_remove.id
       expect(response).to redirect_to(users_path)
     end

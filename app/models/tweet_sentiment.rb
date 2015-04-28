@@ -1,7 +1,8 @@
 class TweetSentiment < ActiveRecord::Base
   belongs_to :user
 
-  validates :search_term, presence: true
+  validates :search_term, presence: true, length: { in: 1..255 }
+  validates :sentiment_score, presence: true
 
   def self.search_tweets(term)
     address = parse_address(term)
